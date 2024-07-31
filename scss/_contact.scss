@@ -1,6 +1,8 @@
 // Styling for the contact section
 section#contact {
-  background-image: url('../img/pule-maps.jpg');
+  background-color: $gray-900;
+  background-image: url('../img/indonesia.png');
+  background-repeat: no-repeat;
   background-position: center;
   .section-heading {
     color: $white;

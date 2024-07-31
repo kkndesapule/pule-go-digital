@@ -53,6 +53,10 @@ section h3.section-subheading {
   font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+.kontak {
+  background-color: rgba(red, green, blue, alpha);
+}
+
 @media (min-width: 768px) {
   section {
     padding: 150px 0;
@@ -597,7 +601,9 @@ header.masthead .intro-text .intro-heading {
 }
 
 section#contact {
-  background-image: url("../img/pule-maps.jpg");
+  background-color: #212529;
+  background-image: url("../img/indonesia.png");
+  background-repeat: no-repeat;
   background-position: center;
 }
 
