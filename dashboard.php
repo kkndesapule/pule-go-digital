@@ -4,16 +4,8 @@
   $query= "SELECT id, title, head, date FROM berita";
   $result= mysqli_query($conn, $query);
 
-  if(isset($_POST['deleteBtn']))
-    {
-        $delete = mysqli_query($conn, "DELETE FROM berita WHERE id=". $data['id']);
-
-        if($delete){
-          header('Location: dashboard.php');
-        } else {
-          echo "Berita gagal dihapus.";
-        }
-    }
+  $sql_query = "SELECT * FROM perangkatdesa";
+  $perangkat_result= mysqli_query($conn, $sql_query);
 ?>
 
 <!DOCTYPE html>
@@ -60,6 +52,9 @@
               <a class="nav-link" href="create-news.php">Tambah Berita</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="create-perangkat.php">Tambah Perangkat Desa</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link text-primary" href="logout.php">Logout</a>
             </li>
           </ul>
@@ -69,6 +64,9 @@
     
     <div class="container-fluid mt-5">
       <div class="container">
+        <div class="section-title">
+          <h4 class="m-0 mb-3 text-uppercase font-weight-bold">Tabel Berita</h4>
+        </div>
         <div class="row">
           <?php echo $deleteMsg??''; ?>
           <div class="table-responsive">
@@ -97,6 +95,56 @@
                     </div>
                     <div class="col-3">
                       <a href="delete-news.php?id=<?php echo $data['id']?>" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+                    </div>
+                  </div>
+                </td>
+              <tr>
+              <?php
+                $sn++;}} else { ?>
+                  <tr>
+                  <td colspan="8">No data found</td>
+                  </tr>
+              <?php } ?>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="container-fluid mt-2">
+      <div class="container">
+        <div class="section-title">
+          <h4 class="m-0 mb-3 text-uppercase font-weight-bold">Tabel Perangkat Desa</h4>
+        </div>
+        <div class="row">
+          <?php echo $deleteMsg??''; ?>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+            <thead><tr><th>No</th>
+              <th>Nama</th>
+              <th>Jabatan</th>
+              <th>Keterangan</th>
+            </thead>
+            <tbody>
+            <?php
+              if (mysqli_num_rows($perangkat_result) > 0) {
+                $sn=1;
+                while($perangkat_data = mysqli_fetch_assoc($perangkat_result)) {
+              ?>
+              <tr>
+                <td><?php echo $sn; ?> </td>
+                <td><?php echo $perangkat_data['nama']; ?> </td>
+                <td><?php echo $perangkat_data['jabatan']; ?></td>
+                <td>
+                  <div class="row">
+                    <div class="col-2">
+                      <a href="edit-perangkat.php?id=<?php echo $perangkat_data['id']?>" class="btn btn-primary"><i class="fa fa-pencil-square"></i></a>
+                    </div>
+                    <div class="col-2">
+                      <a href="delete-perangkat.php?id=<?php echo $perangkat_data['id']?>" class="btn btn-danger"><i class="fa fa-remove"></i></a>
                     </div>
                   </div>
                 </td>

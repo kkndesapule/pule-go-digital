@@ -44,17 +44,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">Berita</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Profil</a>
-            </li>            
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Lembaga Desa</a>
-            </li>                                    
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Kontak Kami</a>
-            </li>
+              <a class="nav-link js-scroll-trigger" href="perangkat-desa.php">Perangkat Desa</a>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="https://rulidh.github.io/web-pengaduan-desa-pule/" target="_blank">Web Pengaduan</a>
             </li>

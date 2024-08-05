@@ -3,11 +3,11 @@
 
     $id= $_GET['id'];
 
-    $delete = mysqli_query($conn, "DELETE FROM berita WHERE id='$id'");
+    $delete = mysqli_query($conn, "DELETE FROM perangkatdesa WHERE id= '$id'");
 
     if($delete){
         header('Location: dashboard.php');
     }else{
-        echo "Berita gagal dihapus.";
+        echo "Perangkat desa gagal dihapus.";
     }
 ?>
