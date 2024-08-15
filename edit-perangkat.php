@@ -97,8 +97,9 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="nama" placeholder="Nama Perangkat Desa" aria-label="nama" aria-describedby="basic-addon1" value="<?php echo $nama;?>">
                 </div>    
+                <img class="img-preview img-fluid mb-3 col-sm-5" width="200px" height="200px">
                 <div class="input-group mb-3">
-                    <input type="file" class="form-control" id="img" name="img">
+                    <input type="file" class="form-control" id="image" name="img" onchange="previewImage()">
                     <label class="input-group-text">Tambah Foto</label>
                 </div>
                 <div class="input-group mb-3">
@@ -113,6 +114,22 @@
                 }
             ?>
         </div>
+
+        <script>
+          function previewImage(){
+            const image= document.querySelector('#image');
+            const imgPreview= document.querySelector('.img-preview');
+
+            imgPreview.style.display= 'block';
+
+            const oFReader= new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload= function(oFREvent){
+              imgPreview.src= oFREvent.target.result;
+            }
+          }
+        </script>
         <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

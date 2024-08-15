@@ -42,24 +42,18 @@
           <i class="fa fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-auto">
+          <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#about">Berita</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#portfolio">Profil</a>
-            </li>            
-            <li class="nav-item">
-              <a class="nav-link" href="#services">Lembaga Desa</a>
-            </li>                                    
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Kontak Kami</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://rulidh.github.io/web-pengaduan-desa-pule/" target="_blank">Web Pengaduan</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-primary" href="login.php">Admin</a>
+                <a class="nav-link js-scroll-trigger" href="berita-desa.php">Berita</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="perangkat-desa.php">Perangkat Desa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="https://rulidh.github.io/web-pengaduan-desa-pule/" target="_blank">Web Pengaduan</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger text-primary" href="login.php">Admin</a>
             </li>
           </ul>
         </div>
@@ -72,7 +66,7 @@
     <div class="container-fluid">
         <div class="container">
             <div class="card m-lg-5">
-                <img src="img/stored_img/<?php echo $data['img']?>" alt="<?php echo $data['img']?>" style="height: 30rem;">
+              <img src="img/stored_img/<?php if($data['img']!= ''){ echo $data['img']; } else { echo 'no-image.jpg';}?>" class="card-img-top" alt="<?php echo $data['title']?>" style="height: 30rem;">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $data['title']?></h5>
                     <p class="card-text"><?php echo $data['body']?></p>

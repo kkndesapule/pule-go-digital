@@ -45,6 +45,8 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
     <!-- Custom fonts for this template -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -81,6 +83,9 @@
               <a class="nav-link text-white brt" href="create-news.php">Tambah Berita</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="create-perangkat.php">Tambah Perangkat Desa</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link text-primary" href="logout.php">Logout</a>
             </li>
           </ul>
@@ -97,16 +102,14 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="title" value="<?php echo $title?>" aria-label="judul" aria-describedby="basic-addon1">
                 </div>    
+                <img class="img-preview img-fluid mb-3 col-sm-5" width="200px" height="200px">
                 <div class="input-group mb-3">
-                    <input type="file" class="form-control" id="img" name="img">
+                    <input type="file" class="form-control" id="image" name="img" onchange="previewImage()">
                     <label class="input-group-text">Tambah Foto</label>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Isi Berita</span>
-                    <textarea class="form-control" rows="6" name="body" aria-label="With textarea"><?php echo $body?></textarea>
-                </div>
-                <div class="input-group">
-                    <input type="submit" value="Update" name="editBtn">
+                <textarea rows="10" cols="80" name="body" id="body"><?php echo $body?></textarea>
+                <div class="input-group my-3">
+                    <input type="submit" value="Update" name="editBtn" class="btn btn-primary">
                 </div>
             </form>
             <?php 
@@ -114,6 +117,29 @@
                 }
             ?>
         </div>
+
+    <script>
+      function previewImage(){
+        const image= document.querySelector('#image');
+        const imgPreview= document.querySelector('.img-preview');
+
+        imgPreview.style.display= 'block';
+
+        const oFReader= new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload= function(oFREvent){
+          imgPreview.src= oFREvent.target.result;
+        }
+      }
+
+      // CKEditor
+      CKEDITOR
+        .replace('body')
+        .catch( error => {
+            console.error( error );
+        } );
+    </script>
         <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

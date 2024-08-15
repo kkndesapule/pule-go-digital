@@ -2,7 +2,7 @@
 <?php
   include('koneksi.php');
 
-  $query= "SELECT * FROM perangkatdesa";
+  $query= "SELECT * FROM berita";
   $result= mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
@@ -44,77 +44,60 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="berita-desa.php">Berita</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="perangkat-desa.php">Perangkat Desa</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="https://rulidh.github.io/web-pengaduan-desa-pule/" target="_blank">Web Pengaduan</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger text-primary" href="login.php">Admin</a>
+              <a class="nav-link js-scroll-trigger" href="berita-desa.php">Berita</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="perangkat-desa.php">Perangkat Desa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://rulidh.github.io/web-pengaduan-desa-pule/" target="_blank">Web Pengaduan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger text-primary" href="login.php">Admin</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <style>
-        .card {
-            border: 1px solid #ccc;
-            box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
-            position: relative;
-
-        }
-
-        a h6 {
-            padding-top: 15px;
-        }
-
-        div.card a {
-            position: absolute;
-            bottom: 0px;
-            border-radius: 0px !important;
-            padding: 0px 0px !important;
-        }
-    </style>
-
-    <!-- Perangkat Desa -->
-    <section id="perangkatdesa">
+    <!-- Berita Desa -->
+    <section id="about">
+      <div class="container-fluid">
         <div class="container">
-            <div class="row">
-                <?php
-                if (mysqli_num_rows($result) > 0) {
-                    $sn=1;
-                    while($data = mysqli_fetch_assoc($result)) {
-                ?>
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="card">
-                        <img class="img-fluid" src="img/foto_perangkat_desa/<?php if($data['img']!= ''){echo $data['img']; }else { echo 'default-avatar.jpg'; } ?>" style="height: 250px;" alt="">
-                        <a href="" class="btn btn-block btn-primary">
-                            <h6 class="text-center" style="margin: 0px;"><?php echo $data['nama']?></h6>
-                            <p class="text-center" style="margin: 0px;"><small><?php echo $data['jabatan']?></small></p>
-                        </a>
-                    </div>
+          <div class="section-title">
+            <h4 class="m-0 mb-3 text-uppercase font-weight-bold">Berita Pule</h4>
+          </div>
+          <div class="row">
+            <?php
+              if (mysqli_num_rows($result) > 0) {
+                $sn=1;
+                while($data = mysqli_fetch_assoc($result)) {
+            ?>
+            <div class="col-lg-4 mb-4">
+              <div class="card">
+                <img src="img/stored_img/<?php if($data['img']!= ''){ echo $data['img']; } else { echo 'no-image.jpg';}?>" class="card-img-top" alt="<?php echo $data['title']?>" style="height: 15rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><?php echo $data['title']?></h5>
+                  <a href="detail-news.php?id=<?php echo $data['id']?>"><p class="card-text"><?php echo $data['head']?>...</p></a>
+                  <p class="card-text"><small class="text-body-secondary"><?php echo $data['date']?></small></p>
                 </div>
-                <?php
-                $sn++; }} else {
-                ?>
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="card">
-                        <img class="img-fluid" src="img/foto_perangkat_desa/default-avatar.jpg" style="height: 250px;" alt="">
-                        <a href="" class="btn btn-block btn-primary">
-                            <h6 class="text-center" style="margin: 0px;">Nama</h6>
-                            <p class="text-center" style="margin: 0px;"><small>Jabatan</small></p>
-                        </a>
-                    </div>
-                </div>
-                <?php
-                    }
-                ?>
+              </div>
             </div>
+            <?php
+                $sn++;}} else { ?>
+                <div class="col mb-4">
+                  <div class="card" style="width: 18rem;">
+                    <img src="img/profil/wilayah.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">No Data Found</h5>
+                      <a href=""><p class="card-text">No Paragraph</p></a>
+                    </div>
+                  </div>
+                </div>
+              <?php } ?>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Kontak -->

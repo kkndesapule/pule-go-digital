@@ -2,7 +2,7 @@
 <?php
   include('koneksi.php');
 
-  $query= "SELECT * FROM berita";
+  $query= "SELECT * FROM berita LIMIT 3";
   $result= mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
@@ -44,7 +44,11 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="berita-desa.php">Berita</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="perangkat-desa.php">Perangkat Desa</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="https://rulidh.github.io/web-pengaduan-desa-pule/" target="_blank">Web Pengaduan</a>
             </li>
@@ -72,7 +76,7 @@
       <div class="container-fluid">
         <div class="container">
           <div class="section-title">
-            <h4 class="m-0 mb-3 text-uppercase font-weight-bold">Featured News</h4>
+            <h4 class="m-0 mb-3 text-uppercase font-weight-bold">Berita Pule</h4>
           </div>
           <div class="row">
             <?php
@@ -82,7 +86,7 @@
             ?>
             <div class="col-lg-4 mb-4">
               <div class="card">
-                <img src="img/stored_img/<?php echo $data['img']?>" class="card-img-top" alt="<?php echo $data['title']?>" style="height: 15rem;">
+                <img src="img/stored_img/<?php if($data['img']!= ''){ echo $data['img']; } else { echo 'no-image.jpg';}?>" class="card-img-top" alt="<?php echo $data['title']?>" style="height: 15rem;">
                 <div class="card-body">
                   <h5 class="card-title"><?php echo $data['title']?></h5>
                   <a href="detail-news.php?id=<?php echo $data['id']?>"><p class="card-text"><?php echo $data['head']?>...</p></a>
